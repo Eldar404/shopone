@@ -6,6 +6,13 @@ export default function Header(){
         <header>
                 <div>
                     <span className={styles.logo}>Машины в аренду</span>
+                <ul className={styles.navbar}>
+                    <li>О нас</li>
+                    <li>Личный кабинет</li>
+                    <li>Контакты</li>
+                    <li>Отзывы</li>
+                    <li>Поддержка</li>
+                </ul>
                 </div>
                 <div className={styles.presentation}></div>
         </header>

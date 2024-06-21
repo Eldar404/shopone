@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.scss";
+import { BsCart2 } from "react-icons/bs";
 
 export default function Header(){
-    return(
+        let [cartOpen,setCartOpne]=useState(false);
+
+        return(
         <header>
                 <div>
                     <span className={styles.logo}>Машины в аренду</span>
@@ -13,7 +16,13 @@ export default function Header(){
                     <li>Отзывы</li>
                     <li>Поддержка</li>
                 </ul>
+                <BsCart2 onClick={()=>setCartOpne(cartOpen=!cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`}/>
                 </div>
+                {cartOpen && (
+                    <div className={styles.shopCart}>
+
+                    </div>
+                )}
                 <div className={styles.presentation}></div>
         </header>
     );

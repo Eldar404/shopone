@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Item.module.scss";
-import { AiOutlineCheck } from "react-icons/ai";
+
 export default function Item(props){
     return(
         <div className={styles.item}>
@@ -8,7 +8,7 @@ export default function Item(props){
     <h2>{props.item.title}</h2>
     <p>{props.item.desc}</p>
     <b>{props.item.price}₽</b>
-            <div className={styles.addToCard} onClick={()=>props.onAdd(props.item)}>+<AiOutlineCheck className={styles.iconChek}/></div>
+            <div className={styles.addToCard} onClick={()=>props.onAdd(props.item)}>+</div>
         </div>
     );
 }

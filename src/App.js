@@ -1,7 +1,8 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Items from "./components/Items";
+import Category from "./components/Category";
 
 function App() {
   const [items,setItems]=useState([
@@ -104,13 +105,33 @@ function App() {
 
   ]);
   const [orders,setOrders]=useState([]);
+  const [currentItems,setCurrentItems]=useState([]);
+  useEffect(()=>{
+    setCurrentItems(items);
+  },[items]);
+const chooseCategory=(category)=>{
+  if(category==="all"){
+    setCurrentItems(items);
+
+  }
+  else{
+    setCurrentItems(items.filter((el)=>el.category===category));
+  }
+}
+
   const addToOrder = (item) => {
-    setOrders([...orders,item]);
+    if(!orders.some((el)=>el.id===item.id)){
+      setOrders([...orders,item]);
+    }
+  }
+  const deleteOrder=(id)=>{
+  setOrders(orders.filter((el)=>el.id!==id));
   }
   return (
     <div className="wrapper">
-    <Header orders={orders}/>
-    <Items allItems={items} onAdd={addToOrder} />
+    <Header orders={orders} onDelete={deleteOrder}/>
+    <Category chooseCategory={chooseCategory}/>
+    <Items allItems={currentItems} onAdd={addToOrder} />
     <Footer/>
     </div>
     

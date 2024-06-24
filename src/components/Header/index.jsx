@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import { BsCart2 } from "react-icons/bs";
+import Orders from "../Orders"
 
-export default function Header(){
+export default function Header(props){
         let [cartOpen,setCartOpne]=useState(false);
+        const showOrders=(props)=>{
+            let summa=0;
+            props.orders.forEach(el=>summa+=Number.parseFloat(el.price))
+            return(
+                <>
+                {props.orders.map(el=>(
+                    <Orders key={el.id} item={el} onDelete={props.onDelete}/>
+                ))}
+                <p className={styles.summa}>Сумма корзины: {new Intl.NumberFormat().format(summa)} ₽</p>
+                </>
+            );
+        }
+        const showNothing=()=>{
+            return(
+                <div className={styles.empty}>
+                    <h2>В корзине нет товаров!</h2>
+
+                </div>
+            );
+        }
 
         return(
         <header>
@@ -20,6 +41,7 @@ export default function Header(){
                 </div>
                 {cartOpen && (
                     <div className={styles.shopCart}>
+                        {props.orders.length>0 ? showOrders(props) : showNothing()}
 
                     </div>
                 )}

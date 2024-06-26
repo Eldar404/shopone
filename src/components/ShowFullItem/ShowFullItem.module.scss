@@ -1,0 +1,95 @@
+.fullItem{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,1,0.634);
+    z-index: 9999;
+    overflow: initial;
+
+
+
+    h2,p,b{
+        margin: 10px 20px;
+        color: #fff;
+        padding-bottom: 25px;
+        font-size: 25px;
+    }
+
+    b{
+        color: rgb(106,66,234);
+        font-size: 30px;
+    }
+
+    .addToCard {
+        
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        background: #3500D3;
+        width: 30px;
+        height: 30px;
+        border-radius: 10%;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        font-weight: 500;
+        color: #ffff;
+        transition: transform 700ms ease;
+        
+        
+        .iconChek {
+            display: none;
+        }
+        
+        &:active .iconChek {
+            display: inline;
+            
+            
+        }
+
+        &:hover{
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 2px 8px 11px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 2px 8px 11px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 8px 11px 0px rgba(0,0,0,0.75);
+        }
+    }
+    .item{
+        img{
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 500ms ease;
+
+
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .div{
+        width: 600px;
+        position: relative;
+        margin: 10% auto;
+        background: #0C0032;
+        border-radius: 15px;
+
+
+        img{
+            width: 100%;
+        }
+    }
+}
+.close{
+    position: relative;
+    text-align: right;
+    margin-right: 28%;
+    top: 5rem;
+    color: #ffff;
+    cursor: pointer;
+    
+    
+    
+}

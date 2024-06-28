@@ -13,7 +13,7 @@ function App() {
 
   useEffect(()=>{
     axios
-      .get("http://localhost:3001/items")
+      .get("http://localhost:3002/items")
       .then((response)=>{
         setItems(response.data)
         chooseCategory("all")
@@ -51,7 +51,7 @@ const onShowItem= (item) =>{
 
   return (
     <div className="wrapper">
-    <Header orders={orders} onDelete={deleteOrder}/>
+    <Header orders={orders} onDelete={deleteOrder} items={items}/>
     <Category chooseCategory={chooseCategory}/>
     <Items allItems={currentItems} onShowItem={onShowItem} onAdd={addToOrder} />
     {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder}

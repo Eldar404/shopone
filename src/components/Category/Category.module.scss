@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 .category{
-    
+    border: outset;
     text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    justify-content: center;
     div{
-    display: inline-block;
     background:rgb(37, 37, 37);
     border-radius: 15px;
     padding: 10px 20px;

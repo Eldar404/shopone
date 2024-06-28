@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import { BsCart2 } from "react-icons/bs";
-import Orders from "../Orders"
+import Orders from "../Orders";
+import PriceListPDF from "../PriceListPDF";
+import {saveAs} from "file-saver";
+import {pdf} from "@react-pdf/renderer";
 
 export default function Header(props){
         let [cartOpen,setCartOpne]=useState(false);
+        const handleDownloadPDF = async ()=>{
+           const pdfBlob = await pdf(<PriceListPDF items={props.items}/>).toBlob();
+            saveAs(pdfBlob, "PriceList.pdf");
+            console.log("ok");
+        }
         const showOrders=(props)=>{
             let summa=0;
             props.orders.forEach(el=>summa+=Number.parseFloat(el.price))
@@ -36,6 +44,7 @@ export default function Header(props){
                     <li>Контакты</li>
                     <li>Отзывы</li>
                     <li>Поддержка</li>
+                    <li onClick={handleDownloadPDF}>Прайс-лист</li>
                 </ul>
                 <BsCart2 onClick={()=>setCartOpne(cartOpen=!cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`}/>
                 </div>
